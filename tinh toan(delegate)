@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        
+        static int cong(int a,int b)
+        {
+            Console.WriteLine("a + b = {0}",a + b);
+            return a+ b;
+        }
+        static int tru(int a, int b)
+        {
+            Console.WriteLine("a - b = {0}", a - b);
+            return a - b;
+        }
+        static int nhan(int a, int b)
+        {
+            Console.WriteLine("a * b = {0}", a * b);
+            return a * b;
+        }
+        static int chia(int a, int b)
+        {
+            Console.WriteLine("a / b = {0}", a / b);
+            return a / b;
+        }
+        delegate int tinhtoan (int a,int b);
+        static void Main(string[] args)
+        {
+            int a, b;
+            Console.WriteLine("a = ");
+            a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("b = ");
+            b = Convert.ToInt32(Console.ReadLine());
+            
+            tinhtoan TT = new tinhtoan(cong);
+            TT += tru;
+            TT += nhan;
+            TT += chia;
+            TT(a, b);
+            Console.ReadLine();
+        }
+    }
+}
