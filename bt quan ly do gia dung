@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp5
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        int tongTien = 0, soHang = 0, giaTien;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int  a, b;
+            a = Convert.ToInt32(textBox1.Text);
+            b = Convert.ToInt32(numericUpDown1.Value);
+            giaTien = a * b;
+            textBox2.Text = Convert.ToString(giaTien);
+            dataGridView1.Rows.Add(comboBox1.Text.ToString(), comboBox2.Text.ToString(), textBox1.Text, numericUpDown1.Value, textBox2.Text);
+            tongTien = tongTien + giaTien;
+            soHang++;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox2.Items.Clear();
+            if(comboBox1.SelectedItem.ToString() == "Gia dụng nhà bếp")
+            {
+                comboBox2.Items.Add("Bếp gas");
+                comboBox2.Items.Add("Bếp từ");
+                comboBox2.Items.Add("Bếp hồng ngoại");
+                comboBox2.Items.Add("Lò nướng");
+            }
+            if (comboBox1.SelectedItem.ToString() == "Dụng cụ nhà bếp")
+            {
+                comboBox2.Items.Add("Xoong, Nồi");
+                comboBox2.Items.Add("Chảo chống dính");
+                comboBox2.Items.Add("Tô - Chén - Dĩa");
+                comboBox2.Items.Add("Dụng cụ ăn");
+            }
+            if (comboBox1.SelectedItem.ToString() == "Đồ dùng gia đình")
+            {
+                comboBox2.Items.Add("Balo, Vali");
+                comboBox2.Items.Add("Nệm");
+                comboBox2.Items.Add("Mền");
+                comboBox2.Items.Add("Bộ drap");
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem.ToString() == "Bếp gas") textBox1.Text = "100000";
+            if (comboBox2.SelectedItem.ToString() == "Bếp từ") textBox1.Text = "101000";
+            if (comboBox2.SelectedItem.ToString() == "Bếp hồng ngoại") textBox1.Text = "102000";
+            if (comboBox2.SelectedItem.ToString() == "Lò nướng") textBox1.Text = "103000";
+            if (comboBox2.SelectedItem.ToString() == "Xoong, Nồi") textBox1.Text = "104000";
+            if (comboBox2.SelectedItem.ToString() == "Chảo chống dính") textBox1.Text = "105000";
+            if (comboBox2.SelectedItem.ToString() == "Tô - Chén - Dĩa") textBox1.Text = "106000";
+            if (comboBox2.SelectedItem.ToString() == "Dụng cụ ăn") textBox1.Text = "107000";
+            if (comboBox2.SelectedItem.ToString() == "Balo, Vali") textBox1.Text = "108000";
+            if (comboBox2.SelectedItem.ToString() == "Nệm") textBox1.Text = "109000";
+            if (comboBox2.SelectedItem.ToString() == "Mền") textBox1.Text = "110000";
+            if (comboBox2.SelectedItem.ToString() == "Bộ drap") textBox1.Text = "111000";
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = Convert.ToString(tongTien);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int giaTien, a, b;
+            a = Convert.ToInt32(textBox1.Text);
+            b = Convert.ToInt32(numericUpDown1.Value);
+            giaTien = a * b;
+            textBox2.Text = Convert.ToString(giaTien);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.RemoveAt(soHang-1);
+            tongTien = tongTien - giaTien;
+        }
+    }
+}
