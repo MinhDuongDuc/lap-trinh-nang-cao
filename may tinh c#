@@ -79,7 +79,7 @@ namespace may_tinh
         {
             so1 = Convert.ToDouble(pheptinh.Text);
             pheptinh.Text += cong.Text;
-            ketqua.Text = "";
+            pheptinh.Text = "";
             bt = "+";
         }
 
@@ -87,7 +87,7 @@ namespace may_tinh
         {
             so1 = Convert.ToDouble(pheptinh.Text);
             pheptinh.Text += tru.Text;
-            ketqua.Text = "";
+            pheptinh.Text = "";
             bt = "-";
         }
 
@@ -95,7 +95,7 @@ namespace may_tinh
         {
             so1 = Convert.ToDouble(pheptinh.Text);
             pheptinh.Text += nhan.Text;
-            ketqua.Text = "";
+            pheptinh.Text = "";
             bt = "*";
         }
 
@@ -103,7 +103,7 @@ namespace may_tinh
         {
             so1 = Convert.ToDouble(pheptinh.Text);
             pheptinh.Text += chia.Text;
-            ketqua.Text = "";
+            pheptinh.Text = "";
             bt = "/";
         }
 
