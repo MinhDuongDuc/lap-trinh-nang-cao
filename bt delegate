@@ -1,0 +1,108 @@
+/*
+ Tạo một lớp Nguoi có các thông tin: 
+ Tên, tuổi, chiều cao, cân nặng, …. 
+ Phương thức so sánh tuổi, chiều cao, cân nặng giữa 2 người 
+ Thực hiện nhập thông tin 2 người 
+ Sử dụng delegate thực hiện gọi so sánh sẽ đưa ra kết quả của cả 3 phương thức so sánh tuổi
+chiều cao, cân nặng của 2 người vừa nhập. 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class ConNguoi
+    {
+        string ten;
+        int tuoi;
+        int chieuCao;
+        int canNang;
+
+        public string getTen()
+        {
+            return ten;
+        }
+        public int getTuoi()
+        {
+            return tuoi;
+        }
+        public int getChieuCao()
+        {
+            return chieuCao;
+        }
+        public int getCanNang()
+        {
+            return canNang;
+        }
+        public void nhaptt()
+        {
+            Console.WriteLine("Ten: ");
+            ten = Console.ReadLine();
+            Console.WriteLine("Tuoi: ");
+            tuoi = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Chieu cao: ");
+            chieuCao = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Can nang: ");
+            canNang = Convert.ToInt32(Console.ReadLine());
+        }
+        public void xuattt()
+        {
+            Console.WriteLine("Ten: {0}",ten);
+            Console.WriteLine("Tuoi: {0}", tuoi);
+            Console.WriteLine("Chieu cao: {0}", chieuCao);
+            Console.WriteLine("Can nang: {0}", canNang);
+        }
+    }
+    class Program
+    {
+        
+        static void SStuoi(ConNguoi cn1,ConNguoi cn2)
+        {
+            if (cn1.getTuoi() > cn2.getTuoi())
+                Console.WriteLine("{0} lon tuoi hon {1}", cn1.getTen(), cn2.getTen());
+            if (cn1.getTuoi() < cn2.getTuoi())
+                Console.WriteLine("{0} nho tuoi hon {1}", cn1.getTen(), cn2.getTen());
+            if (cn1.getTuoi() == cn2.getTuoi())
+                Console.WriteLine("{0} bang tuoi {1}", cn1.getTen(), cn2.getTen());
+        }
+        static void SSchieuCao(ConNguoi cn1, ConNguoi cn2)
+        {
+            if (cn1.getChieuCao() > cn2.getChieuCao())
+                Console.WriteLine("{0} cao hon {1}", cn1.getTen(), cn2.getTen());
+            if (cn1.getChieuCao() < cn2.getChieuCao())
+                Console.WriteLine("{0} thap hon {1}", cn1.getTen(), cn2.getTen());
+            if (cn1.getChieuCao() == cn2.getChieuCao())
+                Console.WriteLine("{0} cao bang {1}", cn1.getTen(), cn2.getTen());
+        }
+        static void SScanNang(ConNguoi cn1, ConNguoi cn2)
+        {
+            if (cn1.getCanNang() > cn2.getCanNang())
+                Console.WriteLine("{0} nang hon {1}", cn1.getTen(), cn2.getTen());
+            if (cn1.getCanNang() < cn2.getCanNang())
+                Console.WriteLine("{0} nhe hon {1}", cn1.getTen(), cn2.getTen());
+            if (cn1.getCanNang() == cn2.getCanNang())
+                Console.WriteLine("{0} nang bang {1}", cn1.getTen(), cn2.getTen());
+        }
+        delegate void SoSanh(ConNguoi cn1, ConNguoi cn2);
+        static void Main(string[] args)
+        {
+            ConNguoi cn1 = new ConNguoi();
+            ConNguoi cn2 = new ConNguoi();
+            Console.WriteLine("Nhap thong tin nguoi thu nhat.");
+            cn1.nhaptt();
+            Console.WriteLine("Nhap thong tin nguoi thu hai.");
+            cn2.nhaptt();
+            SoSanh ss = new SoSanh(SStuoi);
+            ss += SScanNang;
+            ss += SSchieuCao;
+            ss(cn1, cn2);
+            Console.ReadLine();
+        }
+        
+    }
+    
+}
